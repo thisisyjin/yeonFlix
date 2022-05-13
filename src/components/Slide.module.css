@@ -1,0 +1,56 @@
+/* container, slideShow, slides,  buttons, left, right */
+
+/* reset CSS */
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+.container {
+  position: relative;
+}
+
+/*  230 * 4 =  */
+.slideShow {
+  position: relative;
+  width: 920px;
+  height: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slides {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.4s ease-in-out;
+}
+
+.left,
+.right {
+  color: #fff;
+  font-size: 60px;
+  cursor: pointer;
+  transition: opacity 0.1s ease-in;
+  filter: drop-shadow(2px 2px #3f00a7);
+}
+
+.buttons button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left {
+  left: 130px;
+}
+
+.right {
+  right: 130px;
+}
+
+.left:hover,
+.right:hover {
+  opacity: 0.6;
+}

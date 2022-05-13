@@ -1,0 +1,62 @@
+/* container pageName groupLink Link LinkSep */
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  transition: background-color 0.25s ease-in-out;
+}
+
+.container:hover {
+  background-color: #4000a7a9;
+}
+
+.pageName {
+  position: relative;
+  font-size: 36px;
+  color: #fff;
+  margin-left: 30px;
+  transition: transform 0.1s ease-in;
+}
+
+.groupLink {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  color: #fff;
+}
+
+.Link {
+  margin-right: 85px;
+  transition: transform 0.1s ease-in;
+}
+
+.pageName:hover {
+  transform: scale(1.1);
+  color: #ffff00;
+  text-shadow: 1px -1px 0 #4000a7, -1px 2px 1px #4000a7;
+  animation-name: spinTitle;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.Link:hover {
+  transform: scale(1.1);
+  text-shadow: 1px -1px 0 #4000a7, -1px 2px 1px #4000a7;
+}
+
+@keyframes spinTitle {
+  from {
+    transform: rotate3d(1, 0, 0, 0deg);
+  }
+
+  to {
+    transform: rotate3d(1, 0, 0, 359deg);
+  }
+}
