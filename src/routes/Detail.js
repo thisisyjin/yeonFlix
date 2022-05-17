@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MovieDetail from '../components/MovieDetail';
 import Load from '../components/Load';
+import axios from 'axios';
 
 const Detail = () => {
   const { id } = useParams();
@@ -11,11 +12,19 @@ const Detail = () => {
 
   const getMovie = useCallback(async () => {
     setLoading(true);
-    const json = await (
-      await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
-    ).json();
+    // const json = await (
+    //   await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
+    // ).json();
+    try {
+      const response = await axios.get(
+        `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`
+      );
+      console.log(response);
+      setMovie(response.data.data.movie);
+    } catch (e) {
+      console.log(e);
+    }
     setLoading(false);
-    setMovie(json.data.movie);
   }, [id]);
 
   useEffect(() => {

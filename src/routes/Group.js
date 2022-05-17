@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import MovieGroup from '../components/MovieGroup';
 import Load from '../components/Load';
+import axios from 'axios';
 
 const List_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -13,12 +14,14 @@ const Group = () => {
 
   const getMovies = useCallback(async () => {
     setLoading(true);
-    const json = await (
-      await fetch(
+    try {
+      const response = await axios.get(
         `https://yts.mx/api/v2/list_movies.json?page=${page}&${group}&sort_by=rating`
-      )
-    ).json();
-    setMovies(json.data.movies);
+      );
+      setMovies(response.data.data.movies);
+    } catch (e) {
+      console.log(e);
+    }
     setLoading(false);
   }, [group, page]);
 

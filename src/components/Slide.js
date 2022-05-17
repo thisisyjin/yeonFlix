@@ -6,6 +6,7 @@ import {
   IoIosArrowDroprightCircle,
 } from 'react-icons/io';
 import Load from '../components/Load';
+import axios from 'axios';
 
 // Home
 const Slide = ({ movieApi }) => {
@@ -32,8 +33,12 @@ const Slide = ({ movieApi }) => {
 
   const getMovies = useCallback(async () => {
     setLoading(true);
-    const json = await (await fetch(movieApi)).json();
-    setMovies(json.data.movies);
+    try {
+      const response = await axios.get(movieApi);
+      setMovies(response.data.data.movies);
+    } catch (e) {
+      console.log(e);
+    }
     setLoading(false);
   }, [movieApi]);
 

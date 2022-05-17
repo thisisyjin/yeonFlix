@@ -64,6 +64,7 @@
 @media screen and (max-width: 1024px) {
   .pageName {
     font-size: 28px;
+    margin-left: 20px;
   }
   .groupLink {
     display: none;
